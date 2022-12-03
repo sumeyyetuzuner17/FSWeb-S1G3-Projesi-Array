@@ -40,8 +40,8 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(dizi){
+  return dizi;
 }
 
 
@@ -56,13 +56,19 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(dizi){
+  if(dizi.length===25){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
 
 /* Görev 3:
-Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
+Pastane sahibi size yeni bir lezzet fikriyle geldi: Kakule! Bunun da çok tutacağından çok emin. 
+Bu lezzeti eklemek için diziyi değiştirmeniz gerekir.
 
 Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
    1. İlk parametrede tatlar dizisini argüman olarak alan bir dizi alın
@@ -74,8 +80,9 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(dizi,yeniTat){
+  dizi.unshift(yeniTat);
+  return dizi;
 }
 
 
@@ -92,8 +99,9 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(dizi){
+  dizi.pop();
+  return dizi;
 }
 
 
@@ -108,14 +116,15 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(tatlar,x){
+  return tatlar[x];
 }
 
 
 /* Görev 6:
 
-Firma, ürün yelpazesine daha fazla lezzet eklemek istediğinden, sadece ilk veya son aromayı keyfi olarak çıkarmak yerine, aroma adına göre aromaları kaldırmaları gerektiğini fark ederler. Göreviniz, verilen bir dizinde, ada göre bu tadı diziden çıkarmak.
+Firma, ürün yelpazesine daha fazla lezzet eklemek istediğinden, sadece ilk veya son aromayı keyfi olarak çıkarmak yerine, 
+aroma adına göre aromaları kaldırmaları gerektiğini fark ederler. Göreviniz, verilen bir dizinde, ada göre bu tadı diziden çıkarmak.
 
 Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
    1. İlk parametrede tatlar dizisini argüman olarak alın
@@ -128,8 +137,15 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(tatlar,tatAdi){
+  for(let i=0; i<tatlar.length; i++){
+    if(tatlar[i]==tatAdi){
+      tatlar.splice(i,1);
+      return tatlar;
+    }
+    
+  }
+  
 }
 
 
@@ -153,16 +169,24 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
   Bu sorunu çözmek için GELİŞMİŞ DİZİ YÖNTEMLERİNİ (yani .filter) KULLANMAYIN.
 */
 
+let yeniDizi =[];
+function ismeGoreFiltrele(tatlar,filtre){
+  for(let i=0; i<tatlar.length; i++){
+    if(tatlar[i].includes(filtre)){
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+      yeniDizi.push(tatlar[i]);
+      
+    }    
+  }
+  return yeniDizi;
 }
 
 
 
 /* ALIŞTIRMA */
 
-/* ALIŞTIRMA 1: Bir dizideki ortalama kelime sayısını döndüren bir fonksiyon yazın. Bu işlevi orijinalTatlar dizisinde test etmelisiniz, ancak bunu herhangi bir dizi için de kullanabilmelisiniz.
+/* ALIŞTIRMA 1: Bir dizideki ortalama kelime sayısını döndüren bir fonksiyon yazın. Bu işlevi orijinalTatlar dizisinde test etmelisiniz,
+ ancak bunu herhangi bir dizi için de kullanabilmelisiniz.
 
 Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    1. orijinalTatlar dizisini alın
